@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>GlacéGrip — Cool Grip. Clear Mind.</title>
+
+  <meta
+    name="description"
+    content="GlacéGrip is a rechargeable PCM steering wheel sleeve designed to keep your grip cool, dry and comfortable."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* =========================================================
+       GLACÉGRIP
+       Single-file responsive landing page
+       ========================================================= */
+
+    :root {
+      --ink: #07111c;
+      --graphite: #101923;
+      --graphite-2: #18232f;
+      --text: #263747;
+      --muted: #6f7f8e;
+
+      --ice: #f1f9fc;
+      --ice-2: #e2f3f9;
+      --ice-3: #caeaf5;
+
+      --frost: #82d9f5;
+      --blue: #21b8ed;
+      --blue-dark: #078bbd;
+
+      --white: #ffffff;
+      --silver: #d5e0e6;
+      --line: rgba(7, 17, 28, 0.09);
+
+      --radius-sm: 14px;
+      --radius-md: 24px;
+      --radius-lg: 36px;
+      --radius-xl: 52px;
+
+      --shadow-soft:
+        0 24px 80px rgba(18, 74, 102, 0.11);
+
+      --shadow-card:
+        0 18px 50px rgba(7, 17, 28, 0.07);
+
+      --max-width: 1240px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 48px), var(--max-width));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--blue-dark);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 25px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    /* =========================================================
+       NAV
+       ========================================================= */
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(7, 17, 28, 0.06);
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--ink);
+      font-family: "Manrope", sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.05em;
+    }
+
+    .brand span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    .nav-cta {
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--white) !important;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      min-height: 780px;
+      padding: 150px 0 92px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at 82% 24%,
+          rgba(130, 217, 245, 0.42),
+          transparent 30%
+        ),
+        linear-gradient(
+          145deg,
+          #ffffff 0%,
+          #f7fcfe 46%,
+          #eaf7fb 100%
+        );
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 550px;
+      height: 550px;
+      border: 1px solid rgba(33, 184, 237, 0.12);
+      border-radius: 50%;
+      right: -130px;
+      top: 100px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border: 1px solid rgba(33, 184, 237, 0.09);
+      border-radius: 50%;
+      right: -35px;
+      top: 195px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 0.94fr 1.06fr;
+      align-items: center;
+      gap: 64px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .launch-pill {
+      width: fit-content;
+      margin-bottom: 28px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(33, 184, 237, 0.18);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.66);
+      color: var(--blue-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .launch-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--blue);
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(33, 184, 237, 0.1);
+    }
+
+    h1 {
+      max-width: 650px;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(3.2rem, 6vw, 5.4rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+    }
+
+    .hero-copy {
+      max-width: 580px;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+      line-height: 1.65;
+    }
+
+    .hero-buy {
+      margin-top: 38px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .price-block {
+      padding-right: 24px;
+      border-right: 1px solid var(--line);
+    }
+
+    .price {
+      display: block;
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      font-size: 2rem;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.045em;
+    }
+
+    .price-label {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+
+    .beta-note {
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    .beta-note strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .waitlist-form {
+      display: flex;
+      gap: 10px;
+      width: min(100%, 570px);
+      margin-top: 30px;
+    }
+
+    .waitlist-form input {
+      min-width: 0;
+      flex: 1;
+      height: 56px;
+      border: 1px solid rgba(7, 17, 28, 0.12);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.88);
+      padding: 0 18px;
+      color: var(--ink);
+      outline: none;
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .waitlist-form input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(33, 184, 237, 0.1);
+    }
+
+    .waitlist-form button,
+    .primary-btn {
+      min-height: 56px;
+      border: 0;
+      border-radius: 15px;
+      background: var(--ink);
+      padding: 0 25px;
+      color: var(--white);
+      cursor: pointer;
+      white-space: nowrap;
+      font-weight: 700;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .waitlist-form button:hover,
+    .primary-btn:hover {
+      background: #10273b;
+      transform: translateY(-2px);
+      box-shadow: 0 13px 30px rgba(7, 17, 28, 0.18);
+    }
+
+    .microcopy {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    /* =========================================================
+       PRODUCT VISUAL
+       ========================================================= */
+
+    .product-stage {
+      min-height: 570px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .temperature-badge {
+      position: absolute;
+      top: 45px;
+      right: 18px;
+      z-index: 4;
+      padding: 15px 17px;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: var(--shadow-card);
+      backdrop-filter: blur(12px);
+    }
+
+    .temperature-badge small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .temperature-badge strong {
+      color: var(--ink);
+      font-family: "Manrope", sans-serif;
+      font-size: 1.55rem;
+      letter-spacing: -0.05em;
+    }
+
+    .cool-status {
+      position: absolute;
+      left: 10px;
+      bottom: 65px;
+      z-index: 5;
+      padding: 13px 16px;
+      border-radius: 14px;
+      background: rgba(7, 17, 28, 0.9);
+      box-shadow: var(--shadow-card);
+      color: var(--white);
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .cool-status span {
+      color: var(--frost);
+    }
+
+    .visual-halo {
+      width: min(520px, 90vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      position: relative;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(
+          circle at 50% 42%,
+          rgba(255, 255, 255, 0.96) 0%,
+          rgba(228, 246, 252, 0.84) 40%,
+          rgba(161, 225, 246, 0.46) 65%,
+          rgba(255, 255, 255, 0) 72%
+        );
+    }
+
+    .visual-halo::before,
+    .visual-halo::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(33, 184, 237, 0.15);
+    }
+
+    .visual-halo::before {
+      inset: 3%;
+    }
+
+    .visual-halo::after {
+      inset: 14%;
+      border-style: dashed;
+    }
+
+    .steering-wheel {
+      width: 355px;
+      height: 355px;
+      border-radius: 50%;
+      position: relative;
+      z-index: 2;
+      border: 39px solid var(--graphite);
+      box-shadow:
+        inset 0 0 0 6px #344453,
+        0 25px 60px rgba(7, 17, 28, 0.2);
+    }
+
+    .steering-wheel::before {
+      content: "";
+      position: absolute;
+      inset: -26px;
+      border-radius: inherit;
+      border:
+        12px solid rgba(130, 217, 245, 0.9);
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 36%,
+        0 36%
+      );
+      filter: drop-shadow(
+        0 8px 11px rgba(33, 184, 237, 0.25)
+      );
+    }
+
+    .wheel-center {
+      position: absolute;
+      width: 102px;
+      height: 78px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -42%);
+      border-radius: 26px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(
+        145deg,
+        #263746,
+        #101923
+      );
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 10px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .wheel-center::before,
+    .wheel-center::after {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 22px;
+      background: var(--graphite);
+      top: 29px;
+    }
+
+    .wheel-center::before {
+      right: 75px;
+      transform: rotate(27deg);
+      transform-origin: right center;
+    }
+
+    .wheel-center::after {
+      left: 75px;
+      transform: rotate(-27deg);
+      transform-origin: left center;
+    }
+
+    .wheel-mark {
+      position: relative;
+      z-index: 3;
+      font-family: "Manrope", sans-serif;
+      color: var(--frost);
+      font-weight: 800;
+      font-size: 0.74rem;
+      letter-spacing: -0.03em;
+    }
+
+    /* =========================================================
+       SECTION GENERAL
+       ========================================================= */
+
+    section {
+      position: relative;
+    }
+
+    .section-heading {
+      max-width: 770px;
+      margin-bottom: 56px;
+    }
+
+    .section-heading.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin-top: 14px;
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.055em;
+      line-height: 1.04;
+    }
+
+    .section-heading p {
+      max-width: 620px;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 1.03rem;
+      line-height: 1.7;
+    }
+
+    .section-heading.center p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* =========================================================
+       PROBLEM / TEMPERATURE
+       ========================================================= */
+
+    .problem-section {
+      padding: 120px 0;
+      background: var(--ink);
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .problem-section::after {
+      content: "52°";
+      position: absolute;
+      right: -45px;
+      top: -115px;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(14rem, 29vw, 31rem);
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.12em;
+      color: rgba(255, 255, 255, 0.025);
+      pointer-events: none;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 100px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .problem-temp {
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(7rem, 14vw, 13rem);
+      line-height: 0.82;
+      color: var(--frost);
+      font-weight: 800;
+      letter-spacing: -0.1em;
+    }
+
+    .problem-copy h2 {
+      max-width: 610px;
+      margin-top: 28px;
+      font-family: "Manrope", sans-serif;
+      color: var(--white);
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1.07;
+      letter-spacing: -0.05em;
+    }
+
+    .problem-copy p {
+      max-width: 600px;
+      margin-top: 20px;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .market-stats {
+      display: grid;
+      gap: 15px;
+    }
+
+    .market-stat {
+      padding: 27px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .market-stat strong {
+      display: block;
+      color: var(--white);
+      font-family: "Manrope", sans-serif;
+      font-size: 2.1rem;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+
+    .market-stat span {
+      display: block;
+      margin-top: 9px;
+      color: rgba(255, 255, 255, 0.54);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       HOW IT WORKS
+       ========================================================= */
+
+    .how-section {
+      padding: 130px 0;
+      background:
+        linear-gradient(
+          180deg,
+          var(--white),
+          #f7fbfd
+        );
+    }
+
+    .process {
+      border-top: 1px solid var(--line);
+    }
+
+    .process-item {
+      display: grid;
+      grid-template-columns: 120px 0.75fr 1.25fr;
+      gap: 45px;
+      align-items: center;
+      padding: 45px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .process-number {
+      color: var(--ice-3);
+      font-family: "Manrope", sans-serif;
+      font-size: 4rem;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.08em;
+    }
+
+    .process-item h3 {
+      color: var(--ink);
+      font-family: "Manrope", sans-serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: -0.035em;
+    }
+
+    .process-item p {
+      max-width: 580px;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.75;
+    }
+
+    /* =========================================================
+       ENGINEERING BENEFITS
+       ========================================================= */
+
+    .benefits-section {
+      padding: 120px 0;
+      background: var(--ice);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .benefit {
+      min-height: 245px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px;
+      border: 1px solid rgba(7, 17, 28, 0.07);
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.72);
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+    }
+
+    .benefit:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-card);
+      background: var(--white);
+    }
+
+    .benefit-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: var(--frost);
+    }
+
+    .benefit-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .benefit h3 {
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-family: "Manrope", sans-serif;
+      font-size: 1.13rem;
+      letter-spacing: -0.025em;
+    }
+
+    .benefit p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.65;
+    }
+
+    /* =========================================================
+       BETA
+       ========================================================= */
+
+    .beta-section {
+      padding: 130px 0;
+      background: var(--white);
+    }
+
+    .beta-panel {
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      border-radius: var(--radius-lg);
+      background: var(--graphite);
+      color: var(--white);
+    }
+
+    .beta-content {
+      padding: 70px;
+    }
+
+    .beta-content .eyebrow {
+      color: var(--frost);
+    }
+
+    .beta-content h2 {
+      max-width: 620px;
+      margin-top: 18px;
+      color: var(--white);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(2.3rem, 4.5vw, 4rem);
+      line-height: 1.04;
+      letter-spacing: -0.055em;
+    }
+
+    .beta-content > p {
+      max-width: 570px;
+      margin-top: 20px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .countries {
+      margin-top: 35px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .country {
+      padding: 9px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.77rem;
+    }
+
+    .beta-price {
+      min-height: 440px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 50px;
+      text-align: center;
+      background:
+        radial-gradient(
+          circle at 50% 50%,
+          rgba(130, 217, 245, 0.24),
+          transparent 55%
+        ),
+        #121f2b;
+    }
+
+    .beta-price::before,
+    .beta-price::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(130, 217, 245, 0.14);
+      border-radius: 50%;
+    }
+
+    .beta-price::before {
+      width: 330px;
+      height: 330px;
+    }
+
+    .beta-price::after {
+      width: 240px;
+      height: 240px;
+    }
+
+    .beta-price small,
+    .beta-price strong,
+    .beta-price span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .beta-price small {
+      color: var(--frost);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .beta-price strong {
+      margin-top: 13px;
+      color: var(--white);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(4rem, 7vw, 6.5rem);
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.08em;
+    }
+
+    .beta-price span {
+      margin-top: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.82rem;
+    }
+
+    /* =========================================================
+       FOUNDER
+       ========================================================= */
+
+    .founder-section {
+      padding: 140px 0;
+      background: #f7fafb;
+    }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .founder-label h2 {
+      margin-top: 14px;
+      color: var(--ink);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(2.2rem, 4.3vw, 3.6rem);
+      line-height: 1.08;
+      letter-spacing: -0.055em;
+    }
+
+    .quote-mark {
+      color: var(--ice-3);
+      font-family: Georgia, serif;
+      font-size: 7rem;
+      line-height: 0.7;
+    }
+
+    blockquote {
+      margin-top: 24px;
+      color: var(--ink);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(1.55rem, 3vw, 2.55rem);
+      line-height: 1.35;
+      font-weight: 600;
+      letter-spacing: -0.045em;
+    }
+
+    .founder-meta {
+      margin-top: 38px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .founder-monogram {
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--frost);
+      font-family: "Manrope", sans-serif;
+      font-weight: 700;
+    }
+
+    .founder-name {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .founder-title {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    /* =========================================================
+       FINAL CTA
+       ========================================================= */
+
+    .final-cta {
+      padding: 120px 0;
+      text-align: center;
+      background: var(--white);
+    }
+
+    .final-cta h2 {
+      max-width: 740px;
+      margin: 15px auto 0;
+      color: var(--ink);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(2.6rem, 5vw, 4.7rem);
+      line-height: 1.02;
+      letter-spacing: -0.06em;
+    }
+
+    .final-cta > .container > p {
+      max-width: 580px;
+      margin: 20px auto 0;
+      color: var(--muted);
+    }
+
+    .final-cta .waitlist-form {
+      margin: 34px auto 0;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    .footer {
+      padding: 55px 0 32px;
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.64);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .footer-brand {
+      color: var(--white);
+      font-family: "Manrope", sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.055em;
+    }
+
+    .footer-brand span {
+      color: var(--frost);
+    }
+
+    .footer-tagline {
+      margin-top: 7px;
+      font-size: 0.84rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.63);
+      font-size: 0.82rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      padding-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 0.7rem;
+    }
+
+    /* =========================================================
+       MOBILE MENU
+       ========================================================= */
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--ice);
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 18px;
+      height: 2px;
+      margin: 4px auto;
+      display: block;
+      background: var(--ink);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 1000px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .hero-copy-wrap {
+        max-width: 760px;
+      }
+
+      .product-stage {
+        min-height: 510px;
+      }
+
+      .problem-grid {
+        grid-template-columns: 1fr;
+        gap: 55px;
+      }
+
+      .market-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-item {
+        grid-template-columns: 90px 0.8fr 1.2fr;
+      }
+
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .beta-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .founder-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(calc(100% - 36px), var(--max-width));
+      }
+
+      .site-header {
+        background: rgba(255, 255, 255, 0.93);
+      }
+
+      .nav {
+        height: 68px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        display: none;
+        padding: 20px 18px 25px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.98);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 13px 7px;
+      }
+
+      .nav-cta {
+        margin-top: 6px;
+        text-align: center;
+      }
+
+      .hero {
+        min-height: unset;
+        padding: 115px 0 65px;
+      }
+
+      .hero::before,
+      .hero::after {
+        opacity: 0.6;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 14vw, 4.35rem);
+      }
+
+      .hero-copy {
+        margin-top: 22px;
+        font-size: 1rem;
+      }
+
+      .hero-buy {
+        gap: 17px;
+      }
+
+      .price-block {
+        padding-right: 17px;
+      }
+
+      .waitlist-form {
+        flex-direction: column;
+      }
+
+      .waitlist-form input,
+      .waitlist-form button {
+        width: 100%;
+      }
+
+      .product-stage {
+        min-height: 410px;
+      }
+
+      .visual-halo {
+        width: min(420px, 105vw);
+      }
+
+      .steering-wheel {
+        width: 265px;
+        height: 265px;
+        border-width: 30px;
+      }
+
+      .steering-wheel::before {
+        inset: -21px;
+        border-width: 9px;
+      }
+
+      .wheel-center {
+        width: 82px;
+        height: 64px;
+      }
+
+      .wheel-center::before,
+      .wheel-center::after {
+        width: 80px;
+        height: 18px;
+        top: 24px;
+      }
+
+      .wheel-center::before {
+        right: 62px;
+      }
+
+      .wheel-center::after {
+        left: 62px;
+      }
+
+      .temperature-badge {
+        top: 20px;
+        right: 0;
+      }
+
+      .cool-status {
+        bottom: 32px;
+        left: 0;
+      }
+
+      .problem-section,
+      .how-section,
+      .benefits-section,
+      .beta-section,
+      .founder-section,
+      .final-cta {
+        padding: 85px 0;
+      }
+
+      .problem-temp {
+        font-size: clamp(6.5rem, 33vw, 10rem);
+      }
+
+      .market-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .process-item {
+        grid-template-columns: 60px 1fr;
+        gap: 18px;
+        padding: 34px 0;
+      }
+
+      .process-number {
+        font-size: 2.8rem;
+      }
+
+      .process-item p {
+        grid-column: 2;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefit {
+        min-height: 200px;
+      }
+
+      .beta-content {
+        padding: 42px 28px;
+      }
+
+      .beta-price {
+        min-height: 360px;
+        padding: 35px 20px;
+      }
+
+      .footer-top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-links {
+        gap: 18px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .container {
+        width: calc(100% - 28px);
+      }
+
+      .hero {
+        padding-top: 105px;
+      }
+
+      .launch-pill {
+        font-size: 0.66rem;
+      }
+
+      h1 {
+        font-size: 2.85rem;
+      }
+
+      .product-stage {
+        min-height: 360px;
+      }
+
+      .steering-wheel {
+        width: 230px;
+        height: 230px;
+        border-width: 27px;
+      }
+
+      .temperature-badge {
+        transform: scale(0.88);
+        transform-origin: top right;
+      }
+
+      .cool-status {
+        font-size: 0.65rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
+    /* =========================================================
+       TOAST
+       ========================================================= */
+
+    .toast {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 3000;
+      max-width: 370px;
+      padding: 16px 19px;
+      border-radius: 15px;
+      background: var(--ink);
+      color: var(--white);
+      box-shadow: 0 18px 60px rgba(7, 17, 28, 0.25);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+      font-size: 0.84rem;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- =======================================================
+       NAVIGATION
+       ======================================================= -->
+
+  <header class="site-header">
+    <div class="container nav">
+
+      <a href="#top" class="brand">
+        Glacé<span>Grip</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open navigation"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#problem">The problem</a>
+        <a href="#how">How it works</a>
+        <a href="#benefits">Why GlacéGrip</a>
+        <a href="#founder">Founder</a>
+        <a href="#waitlist" class="nav-cta">Join beta</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main id="top">
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="hero">
+
+      <div class="container hero-grid">
+
+        <div class="hero-copy-wrap">
+
+          <div class="launch-pill">
+            <span class="launch-dot"></span>
+            Beta launching Q1 2027
+          </div>
+
+          <h1>
+            The steering wheel that stays cool.
+          </h1>
+
+          <p class="hero-copy">
+            A rechargeable PCM sleeve that clips on in one second.
+            No freezer. No condensation. No more burning your hands.
+          </p>
+
+          <div class="hero-buy">
+
+            <div class="price-block">
+              <span class="price">€19.99</span>
+              <span class="price-label">
+                Early-access price
+              </span>
+            </div>
+
+            <div class="beta-note">
+              <strong>500-unit beta</strong><br />
+              Southern Europe · Q1 2027
+            </div>
+
+          </div>
+
+          <form
+            class="waitlist-form"
+            onsubmit="joinWaitlist(event, 'heroEmail')"
+          >
+            <input
+              id="heroEmail"
+              type="email"
+              placeholder="Your email address"
+              autocomplete="email"
+              required
+              aria-label="Email address"
+            />
+
+            <button type="submit">
+              Join the first 500 →
+            </button>
+          </form>
+
+          <p class="microcopy">
+            Italy · Spain · Portugal · Greece · One email when the beta opens.
+          </p>
+
+        </div>
+
+
+        <!-- PRODUCT CONCEPT VISUAL -->
+
+        <div class="product-stage" aria-label="GlacéGrip steering wheel concept">
+
+          <div class="temperature-badge">
+            <small>Direct sun</small>
+            <strong>52°C</strong>
+          </div>
+
+          <div class="cool-status">
+            PCM <span>Cooling Active</span>
+          </div>
+
+          <div class="visual-halo">
+
+            <div class="steering-wheel">
+
+              <div class="wheel-center">
+                <span class="wheel-mark">
+                  GlacéGrip
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROBLEM
+         ===================================================== -->
+
+    <section class="problem-section" id="problem">
+
+      <div class="container problem-grid">
+
+        <div class="problem-copy">
+
+          <span class="eyebrow">
+            The problem
+          </span>
+
+          <div class="problem-temp">
+            52°C
+          </div>
+
+          <h2>
+            A hot steering wheel is not a minor inconvenience.
+          </h2>
+
+          <p>
+            For drivers with sensory heat sensitivity or
+            hyperhidrosis, it's pain. For everyone else, it's
+            the first miserable minute of every summer commute.
+          </p>
+
+        </div>
+
+
+        <div class="market-stats">
+
+          <div class="market-stat">
+            <strong>€135M</strong>
+            <span>
+              EU steering wheel cover market
+            </span>
+          </div>
+
+          <div class="market-stat">
+            <strong>0</strong>
+            <span>
+              EU brands under €25 offering engineered
+              active cooling
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         HOW IT WORKS
+         ===================================================== -->
+
+    <section class="how-section" id="how">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <span class="eyebrow">
+            Engineered cooling
+          </span>
+
+          <h2>
+            Four steps. No wrestling with a frozen wheel cover.
+          </h2>
+
+          <p>
+            Engineered phase-change cooling. Not a gimmick.
+            Not a wet towel.
+          </p>
+
+        </div>
+
+
+        <div class="process">
+
+          <article class="process-item">
+
+            <div class="process-number">
+              01
+            </div>
+
+            <h3>
+              Clip the shell
+            </h3>
+
+            <p>
+              The integrated multi-layer sleeve stays on your wheel
+              permanently. Tension-band closure. One-handed release.
+            </p>
+
+          </article>
+
+
+          <article class="process-item">
+
+            <div class="process-number">
+              02
+            </div>
+
+            <h3>
+              Slide in the core
+            </h3>
+
+            <p>
+              The slim PCM insert slides into a sealed internal channel.
+              Phase-change material engineered to a specific
+              temperature point.
+            </p>
+
+          </article>
+
+
+          <article class="process-item">
+
+            <div class="process-number">
+              03
+            </div>
+
+            <h3>
+              Recharge flat
+            </h3>
+
+            <p>
+              Pull the insert out and lay it flat in any standard
+              fridge. No deep freezer. No wrestling a bulky sleeve
+              out of ice.
+            </p>
+
+          </article>
+
+
+          <article class="process-item">
+
+            <div class="process-number">
+              04
+            </div>
+
+            <h3>
+              Drive with dry hands
+            </h3>
+
+            <p>
+              Hydrophobic inner layer. Evaporative outer.
+              Zero external condensation on your hands or the wheel.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BENEFITS
+         ===================================================== -->
+
+    <section class="benefits-section" id="benefits">
+
+      <div class="container">
+
+        <div class="section-heading center">
+
+          <span class="eyebrow">
+            Designed around the annoyances
+          </span>
+
+          <h2>
+            The little details are the product.
+          </h2>
+
+          <p>
+            GlacéGrip is built around the parts existing solutions
+            make inconvenient.
+          </p>
+
+        </div>
+
+
+        <div class="benefits-grid">
+
+          <article class="benefit">
+
+            <div class="benefit-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 3v18" />
+                <path d="m8 7 4-4 4 4" />
+                <path d="m8 17 4 4 4-4" />
+              </svg>
+            </div>
+
+            <div>
+              <h3>No freezer</h3>
+              <p>
+                Recharge the removable insert flat
+                in a standard refrigerator.
+              </p>
+            </div>
+
+          </article>
+
+
+          <article class="benefit">
+
+            <div class="benefit-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M12 3s5 5.2 5 10a5 5 0 0 1-10 0c0-4.8 5-10 5-10Z"
+                />
+                <path d="m7 19 10-10" />
+              </svg>
+            </div>
+
+            <div>
+              <h3>No wet hands</h3>
+              <p>
+                Hydrophobic architecture helps keep
+                condensation away from your grip.
+              </p>
+            </div>
+
+          </article>
+
+
+          <article class="benefit">
+
+            <div class="benefit-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="8" />
+                <path d="M12 8v4l3 2" />
+              </svg>
+            </div>
+
+            <div>
+              <h3>One-handed release</h3>
+              <p>
+                A tension-band closure designed
+                for everyday use, not wrestling.
+              </p>
+            </div>
+
+          </article>
+
+
+          <article class="benefit">
+
+            <div class="benefit-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="8" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </div>
+
+            <div>
+              <h3>Shell stays installed</h3>
+              <p>
+                Remove the cooling core.
+                Leave the fitted sleeve on the wheel.
+              </p>
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BETA
+         ===================================================== -->
+
+    <section class="beta-section">
+
+      <div class="container">
+
+        <div class="beta-panel">
+
+          <div class="beta-content">
+
+            <span class="eyebrow">
+              First production beta
+            </span>
+
+            <h2>
+              500 units.
+              Four markets.
+              One summer problem.
+            </h2>
+
+            <p>
+              Early access begins in Southern Europe in Q1 2027,
+              with scale launch planned for 2028.
+            </p>
+
+            <div class="countries">
+              <span class="country">Italy</span>
+              <span class="country">Spain</span>
+              <span class="country">Portugal</span>
+              <span class="country">Greece</span>
+            </div>
+
+          </div>
+
+
+          <div class="beta-price">
+
+            <small>
+              Beta early-access
+            </small>
+
+            <strong>
+              €19.99
+            </strong>
+
+            <span>
+              500-unit first batch
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOUNDER
+         ===================================================== -->
+
+    <section class="founder-section" id="founder">
+
+      <div class="container founder-grid">
+
+        <div class="founder-label">
+
+          <span class="eyebrow">
+            Founder
+          </span>
+
+          <h2>
+            Built by someone who feels the problem.
+          </h2>
+
+        </div>
+
+
+        <div>
+
+          <div class="quote-mark">
+            “
+          </div>
+
+          <blockquote>
+            I don't guess at what a body will tolerate — I test it.
+            After a €50 prototype failed on six specific dimensions,
+            I rebuilt from the failures. GlacéGrip is the architecture
+            that's actually worth building.
+          </blockquote>
+
+          <div class="founder-meta">
+
+            <div class="founder-monogram">
+              MK
+            </div>
+
+            <div>
+              <div class="founder-name">
+                Martha Wuya Koroma
+              </div>
+
+              <div class="founder-title">
+                Final-year MD Candidate · Lancet Psychiatry Contributor · Founder
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FINAL WAITLIST
+         ===================================================== -->
+
+    <section class="final-cta" id="waitlist">
+
+      <div class="container">
+
+        <span class="eyebrow">
+          Q1 2027
+        </span>
+
+        <h2>
+          Be the first to drive cool.
+        </h2>
+
+        <p>
+          Join the early-access list for GlacéGrip's
+          500-unit Southern Europe beta.
+        </p>
+
+        <form
+          class="waitlist-form"
+          onsubmit="joinWaitlist(event, 'footerEmail')"
+        >
+          <input
+            id="footerEmail"
+            type="email"
+            placeholder="Your email address"
+            autocomplete="email"
+            required
+            aria-label="Email address"
+          />
+
+          <button type="submit">
+            Join waitlist →
+          </button>
+        </form>
+
+        <p class="microcopy">
+          No spam. One email when the beta opens.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <div class="footer-top">
+
+        <div>
+          <div class="footer-brand">
+            Glacé<span>Grip</span>
+          </div>
+
+          <div class="footer-tagline">
+            Cool Grip. Clear Mind.
+          </div>
+        </div>
+
+
+        <div class="footer-links">
+
+          <a
+            href="https://www.instagram.com/glacegrip"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@glacegrip"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            TikTok
+          </a>
+
+          <a href="mailto:hello@glacegrip.com">
+            hello@glacegrip.com
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © 2026 GlacéGrip. All rights reserved.
+        </span>
+
+        <span>
+          Designed for cooler summer drives.
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+  <script>
+    /* =========================================================
+       MOBILE NAV
+       ========================================================= */
+
+    const menuToggle =
+      document.getElementById("menuToggle");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+
+    menuToggle.addEventListener("click", () => {
+
+      const isOpen =
+        navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+    });
+
+
+    document
+      .querySelectorAll(".nav-links a")
+      .forEach((link) => {
+
+        link.addEventListener("click", () => {
+
+          navLinks.classList.remove("open");
+
+          menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        });
+
+      });
+
+
+    /* =========================================================
+       WAITLIST
+       
+       IMPORTANT:
+       This currently opens a message addressed to
+       hello@glacegrip.com.
+
+       When you later connect Mailchimp, Brevo, Supabase,
+       ConvertKit etc., replace this function with the
+       relevant API/form submission.
+       ========================================================= */
+
+    function joinWaitlist(event, inputId) {
+
+      event.preventDefault();
+
+      const input =
+        document.getElementById(inputId);
+
+      const email =
+        input.value.trim();
+
+
+      if (!email) {
+        showToast(
+          "Please enter your email address."
+        );
+
+        return;
+      }
+
+
+      const subject =
+        encodeURIComponent(
+          "GlacéGrip Beta Waitlist"
+        );
+
+
+      const body =
+        encodeURIComponent(
+          `Hello GlacéGrip,
+
+Please add this email address to the GlacéGrip beta waitlist:
+
+${email}
+
+Thank you.`
+        );
+
+
+      showToast(
+        "Opening your email app to complete your beta request."
+      );
+
+
+      setTimeout(() => {
+
+        window.location.href =
+          `mailto:hello@glacegrip.com?subject=${subject}&body=${body}`;
+
+      }, 400);
+
+    }
+
+
+    /* =========================================================
+       TOAST
+       ========================================================= */
+
+    let toastTimer;
+
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent =
+        message;
+
+      toast.classList.add("show");
+
+
+      clearTimeout(toastTimer);
+
+
+      toastTimer =
+        setTimeout(() => {
+
+          toast.classList.remove("show");
+
+        }, 3500);
+
+    }
+  </script>
+
+</body>
+</html>
