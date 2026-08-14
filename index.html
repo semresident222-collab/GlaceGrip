@@ -40,6 +40,12 @@
       --blue: #21b8ed;
       --blue-dark: #078bbd;
 
+      --hot: #ff5a36;
+      --hot-2: #ff7a32;
+      --amber: #ffb347;
+      --cool: #6ed8ff;
+      --cool-2: #21b8ed;
+
       --white: #ffffff;
       --silver: #d5e0e6;
       --line: rgba(7, 17, 28, 0.09);
@@ -189,15 +195,27 @@
       overflow: hidden;
       background:
         radial-gradient(
+          circle at 16% 22%,
+          rgba(255, 90, 54, 0.17),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 36% 28%,
+          rgba(255, 179, 71, 0.16),
+          transparent 26%
+        ),
+        radial-gradient(
           circle at 82% 24%,
-          rgba(130, 217, 245, 0.42),
-          transparent 30%
+          rgba(130, 217, 245, 0.34),
+          transparent 31%
         ),
         linear-gradient(
-          145deg,
-          #ffffff 0%,
-          #f7fcfe 46%,
-          #eaf7fb 100%
+          120deg,
+          #fff7f2 0%,
+          #fff1df 23%,
+          #f9fbfd 51%,
+          #eef8fc 76%,
+          #e7f5fb 100%
         );
     }
 
@@ -374,6 +392,121 @@
       font-size: 0.72rem;
     }
 
+
+    /* =========================================================
+       THERMAL JOURNEY
+       ========================================================= */
+
+    .thermal-journey {
+      margin-top: 24px;
+      width: min(100%, 620px);
+    }
+
+    .thermal-track {
+      position: relative;
+      height: 14px;
+      border-radius: 999px;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          90deg,
+          var(--hot) 0%,
+          var(--hot-2) 18%,
+          var(--amber) 42%,
+          #d7e9f2 62%,
+          var(--cool) 82%,
+          var(--cool-2) 100%
+        );
+      box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.45),
+        0 10px 24px rgba(7, 17, 28, 0.08);
+    }
+
+    .thermal-track::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: 45%;
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.55),
+          transparent
+        );
+      animation: thermalShimmer 4.8s linear infinite;
+    }
+
+    .thermal-dot {
+      position: absolute;
+      top: 50%;
+      left: 6%;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      transform: translateY(-50%);
+      background: var(--white);
+      border: 3px solid rgba(7, 17, 28, 0.07);
+      box-shadow:
+        0 0 0 6px rgba(255, 90, 54, 0.14),
+        0 8px 22px rgba(255, 90, 54, 0.18);
+      animation: travelCool 6s ease-in-out infinite alternate;
+    }
+
+    .thermal-labels {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .thermal-labels span:nth-child(1) {
+      color: var(--hot);
+    }
+
+    .thermal-labels span:nth-child(2) {
+      color: #c57b1f;
+    }
+
+    .thermal-labels span:nth-child(3) {
+      color: var(--cool-2);
+    }
+
+    @keyframes thermalShimmer {
+      from {
+        transform: translateX(-120%);
+      }
+      to {
+        transform: translateX(320%);
+      }
+    }
+
+    @keyframes travelCool {
+      0% {
+        left: 6%;
+        box-shadow:
+          0 0 0 6px rgba(255, 90, 54, 0.14),
+          0 8px 22px rgba(255, 90, 54, 0.18);
+      }
+
+      48% {
+        box-shadow:
+          0 0 0 6px rgba(255, 179, 71, 0.14),
+          0 8px 22px rgba(255, 179, 71, 0.18);
+      }
+
+      100% {
+        left: calc(100% - 30px);
+        box-shadow:
+          0 0 0 6px rgba(33, 184, 237, 0.14),
+          0 8px 22px rgba(33, 184, 237, 0.18);
+      }
+    }
+
     /* =========================================================
        PRODUCT VISUAL
        ========================================================= */
@@ -548,6 +681,60 @@
       font-weight: 800;
       font-size: 0.74rem;
       letter-spacing: -0.03em;
+    }
+
+
+    .steering-wheel {
+      animation: wheelSpin 20s linear infinite;
+      transform-origin: center;
+      will-change: transform;
+    }
+
+    .steering-wheel::after {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: 2px dashed rgba(33, 184, 237, 0.18);
+      animation: pulseCool 3.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .visual-halo::before {
+      animation: haloPulse 4.2s ease-in-out infinite;
+    }
+
+    .visual-halo::after {
+      animation: haloPulse 5.2s ease-in-out infinite reverse;
+    }
+
+    @keyframes wheelSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulseCool {
+      0%, 100% {
+        opacity: 0.35;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.72;
+        transform: scale(1.035);
+      }
+    }
+
+    @keyframes haloPulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.78;
+      }
+
+      50% {
+        transform: scale(1.03);
+        opacity: 1;
+      }
     }
 
     /* =========================================================
@@ -1235,6 +1422,14 @@
         width: 100%;
       }
 
+      .thermal-journey {
+        width: 100%;
+      }
+
+      .thermal-labels {
+        font-size: 0.66rem;
+      }
+
       .product-stage {
         min-height: 410px;
       }
@@ -1394,36 +1589,12 @@
         transition: none !important;
         animation: none !important;
       }
+
+      .thermal-dot {
+        left: calc(100% - 30px);
+      }
     }
 
-    /* =========================================================
-       TOAST
-       ========================================================= */
-
-    .toast {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      z-index: 3000;
-      max-width: 370px;
-      padding: 16px 19px;
-      border-radius: 15px;
-      background: var(--ink);
-      color: var(--white);
-      box-shadow: 0 18px 60px rgba(7, 17, 28, 0.25);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(20px);
-      transition:
-        opacity 0.25s ease,
-        transform 0.25s ease;
-      font-size: 0.84rem;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
 
   </style>
 </head>
@@ -1506,26 +1677,50 @@
           </div>
 
           <form
-            class="waitlist-form"
-            onsubmit="joinWaitlist(event, 'heroEmail')"
-          >
-            <input
-              id="heroEmail"
-              type="email"
-              placeholder="Your email address"
-              autocomplete="email"
-              required
-              aria-label="Email address"
-            />
+  class="waitlist-form"
+  action="https://glacegrip.us4.list-manage.com/subscribe/post?u=f0b8c70e55d5288b1fe4e0149&amp;id=9e5e93d64e&amp;f_id=004ba5e2f0"
+  method="post"
+  target="_blank"
+>
+  <input
+    type="email"
+    name="EMAIL"
+    placeholder="Your email address"
+    autocomplete="email"
+    required
+    aria-label="Email address"
+  />
 
-            <button type="submit">
-              Join the first 500 →
-            </button>
-          </form>
+  <!-- Mailchimp anti-bot field — leave this hidden -->
+  <div aria-hidden="true" style="position:absolute;left:-5000px;">
+    <input
+      type="text"
+      name="b_f0b8c70e55d5288b1fe4e0149_9e5e93d64e"
+      tabindex="-1"
+      value=""
+    />
+  </div>
+
+  <button type="submit">
+    Join the first 500 →
+  </button>
+</form>
 
           <p class="microcopy">
             Italy · Spain · Portugal · Greece · One email when the beta opens.
           </p>
+
+          <div class="thermal-journey" aria-label="Hot to cool visual progression">
+            <div class="thermal-track" aria-hidden="true">
+              <span class="thermal-dot"></span>
+            </div>
+
+            <div class="thermal-labels">
+              <span>Hot</span>
+              <span>Amber</span>
+              <span>Cool</span>
+            </div>
+          </div>
 
         </div>
 
@@ -2012,23 +2207,33 @@
         </p>
 
         <form
-          class="waitlist-form"
-          onsubmit="joinWaitlist(event, 'footerEmail')"
-        >
-          <input
-            id="footerEmail"
-            type="email"
-            placeholder="Your email address"
-            autocomplete="email"
-            required
-            aria-label="Email address"
-          />
+  class="waitlist-form"
+  action="https://glacegrip.us4.list-manage.com/subscribe/post?u=f0b8c70e55d5288b1fe4e0149&amp;id=9e5e93d64e&amp;f_id=004ba5e2f0"
+  method="post"
+  target="_blank"
+>
+  <input
+    type="email"
+    name="EMAIL"
+    placeholder="Your email address"
+    autocomplete="email"
+    required
+    aria-label="Email address"
+  />
 
-          <button type="submit">
-            Join waitlist →
-          </button>
-        </form>
+  <div aria-hidden="true" style="position:absolute;left:-5000px;">
+    <input
+      type="text"
+      name="b_f0b8c70e55d5288b1fe4e0149_9e5e93d64e"
+      tabindex="-1"
+      value=""
+    />
+  </div>
 
+  <button type="submit">
+    Join waitlist →
+  </button>
+</form>
         <p class="microcopy">
           No spam. One email when the beta opens.
         </p>
@@ -2056,7 +2261,7 @@
           </div>
 
           <div class="footer-tagline">
-           Keep the Wheel. Lose the Heat.
+           Keep the wheel. Lose the heat.
           </div>
         </div>
 
@@ -2105,14 +2310,6 @@
   </footer>
 
 
-  <div
-    class="toast"
-    id="toast"
-    role="status"
-    aria-live="polite"
-  ></div>
-
-
   <script>
     /* =========================================================
        MOBILE NAV
@@ -2154,102 +2351,6 @@
         });
 
       });
-
-
-    /* =========================================================
-       WAITLIST
-       
-       IMPORTANT:
-       This currently opens a message addressed to
-       hello@glacegrip.com.
-
-       When you later connect Mailchimp, Brevo, Supabase,
-       ConvertKit etc., replace this function with the
-       relevant API/form submission.
-       ========================================================= */
-
-    function joinWaitlist(event, inputId) {
-
-      event.preventDefault();
-
-      const input =
-        document.getElementById(inputId);
-
-      const email =
-        input.value.trim();
-
-
-      if (!email) {
-        showToast(
-          "Please enter your email address."
-        );
-
-        return;
-      }
-
-
-      const subject =
-        encodeURIComponent(
-          "GlacéGrip Beta Waitlist"
-        );
-
-
-      const body =
-        encodeURIComponent(
-          `Hello GlacéGrip,
-
-Please add this email address to the GlacéGrip beta waitlist:
-
-${email}
-
-Thank you.`
-        );
-
-
-      showToast(
-        "Opening your email app to complete your beta request."
-      );
-
-
-      setTimeout(() => {
-
-        window.location.href =
-          `mailto:hello@glacegrip.com?subject=${subject}&body=${body}`;
-
-      }, 400);
-
-    }
-
-
-    /* =========================================================
-       TOAST
-       ========================================================= */
-
-    let toastTimer;
-
-
-    function showToast(message) {
-
-      const toast =
-        document.getElementById("toast");
-
-      toast.textContent =
-        message;
-
-      toast.classList.add("show");
-
-
-      clearTimeout(toastTimer);
-
-
-      toastTimer =
-        setTimeout(() => {
-
-          toast.classList.remove("show");
-
-        }, 3500);
-
-    }
   </script>
 
 </body>
