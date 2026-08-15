@@ -1408,9 +1408,12 @@
 
 @keyframes carGlide {
   0% {
-    left: -180px;
+    left: -110px;
   }
-  75% {
+  12% {
+    left: 7%;
+  }
+  78% {
     left: calc(100% - 160px);
   }
   100% {
@@ -1437,14 +1440,15 @@
 }
 
 @keyframes textReveal {
-  0% {
+  0%,
+  16% {
     width: 0;
     opacity: 0;
   }
-  10% {
+  20% {
     opacity: 1;
   }
-  75% {
+  78% {
     width: 74%;
     opacity: 1;
   }
