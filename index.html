@@ -1272,112 +1272,188 @@
        DRIVE COOL ANIMATION  (CORRECTED)
        ========================================================= */
 
-    .drive-cool-stage {
-      position: relative;
-      width: min(100%, 1040px);
-      height: 190px;
-      margin: 34px auto 8px;
-      overflow: hidden;
-      border-radius: 32px;
-      border: 1px solid rgba(7, 17, 28, 0.08);
-      background:
-        linear-gradient(
-          90deg,
-          rgba(255, 90, 54, 0.12) 0%,
-          rgba(255, 179, 71, 0.12) 31%,
-          rgba(248, 251, 253, 0.94) 53%,
-          rgba(110, 216, 255, 0.18) 78%,
-          rgba(33, 184, 237, 0.28) 100%
-        );
-      isolation: isolate;
-    }
+   .drive-cool-stage {
+  position: relative;
+  width: min(100%, 1040px);
+  height: 190px;
+  margin: 34px auto 10px;
+  overflow: hidden;
+  border-radius: 32px;
+  border: 1px solid rgba(7, 17, 28, 0.08);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 90, 54, 0.10) 0%,
+      rgba(255, 179, 71, 0.10) 28%,
+      rgba(248, 251, 253, 0.95) 50%,
+      rgba(110, 216, 255, 0.14) 76%,
+      rgba(33, 184, 237, 0.22) 100%
+    );
+  isolation: isolate;
+}
 
-    .drive-road {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 34px;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(7,17,28,0.08), rgba(7,17,28,0.24), rgba(7,17,28,0.08));
-    }
+.drive-cool-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 50%, rgba(255, 90, 54, 0.12), transparent 24%),
+    radial-gradient(circle at 84% 50%, rgba(33, 184, 237, 0.16), transparent 28%);
+  pointer-events: none;
+}
 
-    .drive-car-wrap {
-      position: absolute;
-      bottom: 28px;
-      left: -420px;
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      animation: carDrive 7s cubic-bezier(.45,.02,.18,1) infinite;
-      z-index: 3;
-      will-change: left;
-    }
+.drive-road {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: 38px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(7, 17, 28, 0.10),
+    rgba(7, 17, 28, 0.24),
+    rgba(7, 17, 28, 0.10)
+  );
+}
 
-    .drive-car {
-      width: 170px;
-      max-width: 34vw;
-      flex-shrink: 0;
-      filter: drop-shadow(0 18px 24px rgba(7,17,28,0.16));
-    }
+.drive-trail {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  width: 0;
+  height: 72px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(189, 239, 255, 0.22) 35%,
+      rgba(110, 216, 255, 0.36) 68%,
+      rgba(33, 184, 237, 0.42) 100%
+    );
+  filter: blur(0.4px);
+  animation: trailGrow 7s ease-in-out infinite;
+  z-index: 1;
+}
 
-    .drive-car img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+.drive-reveal {
+  position: absolute;
+  left: 11%;
+  top: 50%;
+  width: 0;
+  overflow: hidden;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  z-index: 2;
+  animation: textReveal 7s steps(30, end) infinite;
+}
 
-    .drive-car-fallback {
-      width: 160px;
-      height: 54px;
-      border-radius: 44% 56% 18px 18px / 70% 70% 18px 18px;
-      background: linear-gradient(145deg, #172430, #07111c);
-      position: relative;
-    }
+.drive-reveal span {
+  display: inline-block;
+  padding-right: 18px;
+  color: var(--blue-dark);
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(1.45rem, 4vw, 3.15rem);
+  font-weight: 800;
+  line-height: 1.03;
+  letter-spacing: -0.055em;
+  text-shadow: 0 0 24px rgba(110, 216, 255, 0.24);
+}
 
-    .drive-car-fallback::before,
-    .drive-car-fallback::after {
-      content: "";
-      position: absolute;
-      bottom: -9px;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #07111c;
-      border: 5px solid #334655;
-    }
+.drive-car {
+  position: absolute;
+  z-index: 4;
+  left: -180px;
+  bottom: 24px;
+  width: 144px;
+  max-width: 28vw;
+  filter: drop-shadow(0 16px 24px rgba(7, 17, 28, 0.14));
+  animation: carGlide 7s cubic-bezier(.45,.02,.18,1) infinite;
+}
 
-    .drive-car-fallback::before { left: 22px; }
-    .drive-car-fallback::after { right: 22px; }
+.drive-car img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-    .drive-trail {
-      white-space: nowrap;
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(1.2rem, 3vw, 2.2rem);
-      font-weight: 800;
-      color: var(--ink);
-      letter-spacing: -0.03em;
-      opacity: 0;
-      transform: translateX(-18px);
-      animation: trailFade 7s cubic-bezier(.45,.02,.18,1) infinite;
-      pointer-events: none;
-      text-shadow: 0 2px 14px rgba(255,255,255,0.7);
-    }
+.drive-car-fallback {
+  position: relative;
+  width: 140px;
+  height: 34px;
+  border-radius: 28px 40px 16px 16px / 22px 22px 14px 14px;
+  background: linear-gradient(145deg, #172430, #07111c);
+}
 
-    @keyframes carDrive {
-      0%   { left: -420px; }
-      35%  { left: calc(50% - 210px); }
-      65%  { left: calc(50% - 210px); }
-      90%  { left: calc(100% - 180px); }
-      100% { left: calc(100% + 80px); }
-    }
+.drive-car-fallback::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 5px;
+  width: 66px;
+  height: 14px;
+  border-radius: 10px 18px 8px 8px;
+  background: rgba(160, 224, 255, 0.18);
+}
 
-    @keyframes trailFade {
-      0%, 10%   { opacity: 0; transform: translateX(-18px); }
-      18%       { opacity: 1; transform: translateX(0); }
-      85%       { opacity: 1; transform: translateX(0); }
-      95%, 100% { opacity: 0; transform: translateX(10px); }
-    }
+.drive-car-fallback::after {
+  content: "";
+  position: absolute;
+  inset: auto 14px -10px 14px;
+  height: 20px;
+  background:
+    radial-gradient(circle at 18px 10px, #07111c 0 8px, #425463 8px 12px, transparent 12px),
+    radial-gradient(circle at calc(100% - 18px) 10px, #07111c 0 8px, #425463 8px 12px, transparent 12px);
+}
 
+@keyframes carGlide {
+  0% {
+    left: -180px;
+  }
+  75% {
+    left: calc(100% - 160px);
+  }
+  100% {
+    left: calc(100% + 80px);
+  }
+}
+
+@keyframes trailGrow {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  75% {
+    width: 76%;
+    opacity: 1;
+  }
+  100% {
+    width: 82%;
+    opacity: 0.35;
+  }
+}
+
+@keyframes textReveal {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  75% {
+    width: 74%;
+    opacity: 1;
+  }
+  100% {
+    width: 74%;
+    opacity: 1;
+  }
+}
 
     /* =========================================================
        FOOTER
@@ -2467,23 +2543,24 @@
       <div class="container">
 
         <!-- CORRECTED CAR ANIMATION -->
-        <div class="drive-cool-stage" aria-label="Animated car driving with trailing message">
-          <div class="drive-road" aria-hidden="true"></div>
+        <div class="drive-cool-stage" aria-label="Animated transition from hot to cool driving">
+  <div class="drive-trail" aria-hidden="true"></div>
 
-          <div class="drive-car-wrap" aria-hidden="true">
-            <div class="drive-car">
-              <img
-                src="cta-drive-cool-car.png"
-                alt=""
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-              />
-              <div class="drive-car-fallback" style="display:none;"></div>
-            </div>
-            <div class="drive-trail">
-              <span>Be the first to drive cool. 🧊🧊</span>
-            </div>
-          </div>
-        </div>
+  <div class="drive-reveal" aria-hidden="true">
+    <span>Be the first to drive cool. 🧊🧊</span>
+  </div>
+
+  <div class="drive-road" aria-hidden="true"></div>
+
+  <div class="drive-car" aria-hidden="true">
+    <img
+      src="cta-drive-cool-car.png"
+      alt=""
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+    />
+    <div class="drive-car-fallback" style="display:none;"></div>
+  </div>
+</div>
         
              <span class="eyebrow">
           Q1 2027
