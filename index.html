@@ -541,10 +541,11 @@
     }
 
     .temperature-badge strong {
-      color: var(--ink);
+      color: var(--hot);
       font-family: "Manrope", sans-serif;
       font-size: 1.55rem;
       letter-spacing: -0.05em;
+      text-shadow: 0 0 24px rgba(255, 90, 54, 0.18);
     }
 
     .cool-status {
@@ -817,9 +818,10 @@
       font-family: "Manrope", sans-serif;
       font-size: clamp(7rem, 14vw, 13rem);
       line-height: 0.82;
-      color: var(--frost);
+      color: var(--hot);
       font-weight: 800;
       letter-spacing: -0.1em;
+      text-shadow: 0 0 54px rgba(255, 90, 54, 0.12);
     }
 
     .problem-copy h2 {
@@ -890,10 +892,10 @@
 
     .process-item {
       display: grid;
-      grid-template-columns: 120px 0.75fr 1.25fr;
-      gap: 45px;
+      grid-template-columns: 92px 0.8fr 1.05fr 0.95fr;
+      gap: 34px;
       align-items: center;
-      padding: 45px 0;
+      padding: 42px 0;
       border-bottom: 1px solid var(--line);
     }
 
@@ -919,6 +921,49 @@
       color: var(--muted);
       font-size: 0.98rem;
       line-height: 1.75;
+    }
+
+
+    .process-visual {
+      position: relative;
+      overflow: hidden;
+      min-height: 210px;
+      border-radius: 24px;
+      border: 1px solid rgba(7, 17, 28, 0.08);
+      background:
+        radial-gradient(circle at 74% 20%, rgba(110, 216, 255, 0.18), transparent 32%),
+        linear-gradient(145deg, #f8fcfe, #eef6f9);
+    }
+
+    .process-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 210px;
+      object-fit: cover;
+    }
+
+    .process-visual-fallback {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    .process-visual::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 38%;
+      background: linear-gradient(to top, rgba(7, 17, 28, 0.10), transparent);
+      pointer-events: none;
     }
 
     /* =========================================================
@@ -1159,17 +1204,26 @@
       gap: 15px;
     }
 
-    .founder-monogram {
-      width: 50px;
-      height: 50px;
+    .founder-photo {
+      width: 58px;
+      height: 58px;
       flex-shrink: 0;
-      display: grid;
-      place-items: center;
+      overflow: hidden;
       border-radius: 50%;
-      background: var(--ink);
-      color: var(--frost);
-      font-family: "Manrope", sans-serif;
-      font-weight: 700;
+      border: 3px solid rgba(130, 217, 245, 0.75);
+      background:
+        radial-gradient(circle at 35% 30%, rgba(130, 217, 245, 0.38), transparent 42%),
+        var(--ink);
+      box-shadow:
+        0 0 0 6px rgba(130, 217, 245, 0.09),
+        0 12px 32px rgba(7, 17, 28, 0.12);
+    }
+
+    .founder-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
 
     .founder-name {
@@ -1210,8 +1264,144 @@
     }
 
     .final-cta .waitlist-form {
-      margin: 34px auto 0;
+      margin: 28px auto 0;
     }
+
+
+    .drive-cool-stage {
+      position: relative;
+      width: min(100%, 1040px);
+      height: 190px;
+      margin: 34px auto 8px;
+      overflow: hidden;
+      border-radius: 32px;
+      border: 1px solid rgba(7, 17, 28, 0.08);
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255, 90, 54, 0.12) 0%,
+          rgba(255, 179, 71, 0.12) 31%,
+          rgba(248, 251, 253, 0.94) 53%,
+          rgba(110, 216, 255, 0.18) 78%,
+          rgba(33, 184, 237, 0.28) 100%
+        );
+      isolation: isolate;
+    }
+
+    .drive-road {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 34px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(7,17,28,0.08), rgba(7,17,28,0.24), rgba(7,17,28,0.08));
+    }
+
+    .drive-trail {
+      position: absolute;
+      top: 50%;
+      left: 3%;
+      width: 0;
+      height: 78px;
+      transform: translateY(-50%);
+      border-radius: 999px;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0) 0%,
+          rgba(110,216,255,0.18) 35%,
+          rgba(110,216,255,0.34) 70%,
+          rgba(33,184,237,0.44) 100%
+        );
+      animation: trailGrow 7s ease-in-out infinite;
+    }
+
+    .drive-message {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      z-index: 1;
+      padding: 24px;
+      pointer-events: none;
+    }
+
+    .drive-message span {
+      max-width: 820px;
+      color: var(--ink);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(1.45rem, 4vw, 3.1rem);
+      font-weight: 800;
+      line-height: 1.03;
+      letter-spacing: -0.055em;
+      opacity: 0.12;
+      animation: wordsCool 7s ease-in-out infinite;
+    }
+
+    .drive-car {
+      position: absolute;
+      z-index: 3;
+      left: -180px;
+      bottom: 28px;
+      width: 170px;
+      max-width: 34vw;
+      filter: drop-shadow(0 18px 24px rgba(7,17,28,0.16));
+      animation: carGlide 7s cubic-bezier(.45,.02,.18,1) infinite;
+    }
+
+    .drive-car img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .drive-car-fallback {
+      width: 160px;
+      height: 54px;
+      border-radius: 44% 56% 18px 18px / 70% 70% 18px 18px;
+      background: linear-gradient(145deg, #172430, #07111c);
+      position: relative;
+    }
+
+    .drive-car-fallback::before,
+    .drive-car-fallback::after {
+      content: "";
+      position: absolute;
+      bottom: -9px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #07111c;
+      border: 5px solid #334655;
+    }
+
+    .drive-car-fallback::before { left: 22px; }
+    .drive-car-fallback::after { right: 22px; }
+
+    @keyframes carGlide {
+      0% { left: -180px; }
+      78% { left: calc(100% - 150px); }
+      100% { left: calc(100% + 80px); }
+    }
+
+    @keyframes trailGrow {
+      0% { width: 0; opacity: 0; }
+      15% { opacity: 1; }
+      76% { width: 88%; opacity: 1; }
+      100% { width: 100%; opacity: 0.42; }
+    }
+
+    @keyframes wordsCool {
+      0%, 12% { opacity: 0.10; color: var(--ink); }
+      45% { opacity: 0.42; color: #24445a; }
+      78%, 100% {
+        opacity: 0.95;
+        color: var(--blue-dark);
+        text-shadow: 0 0 30px rgba(110,216,255,0.28);
+      }
+    }
+
+
 
     /* =========================================================
        FOOTER
@@ -1325,7 +1515,12 @@
       }
 
       .process-item {
-        grid-template-columns: 90px 0.8fr 1.2fr;
+        grid-template-columns: 80px 0.9fr 1.1fr;
+      }
+
+      .process-visual {
+        grid-column: 2 / -1;
+        min-height: 230px;
       }
 
       .benefits-grid {
@@ -1510,6 +1705,11 @@
         grid-column: 2;
       }
 
+      .process-visual {
+        grid-column: 1 / -1;
+        min-height: 210px;
+      }
+
       .benefits-grid {
         grid-template-columns: 1fr;
       }
@@ -1525,6 +1725,20 @@
       .beta-price {
         min-height: 360px;
         padding: 35px 20px;
+      }
+
+      .drive-cool-stage {
+        height: 150px;
+        border-radius: 24px;
+      }
+
+      .drive-car {
+        width: 130px;
+        bottom: 24px;
+      }
+
+      .drive-message {
+        padding: 18px;
       }
 
       .footer-top {
@@ -1593,6 +1807,20 @@
       .thermal-dot {
         left: calc(100% - 30px);
       }
+
+      .drive-car {
+        left: calc(100% - 150px);
+      }
+
+      .drive-trail {
+        width: 88%;
+        opacity: 1;
+      }
+
+      .drive-message span {
+        opacity: 0.95;
+        color: var(--blue-dark);
+      }
     }
 
 
@@ -1600,6 +1828,16 @@
 </head>
 
 <body>
+
+  <!--
+    PLACEHOLDER ASSETS TO UPLOAD NEXT TO index.html:
+    founder-martha.jpg
+    cta-drive-cool-car.png
+    step-01-shell.jpg
+    step-02-core.jpg
+    step-03-recharge.jpg
+    step-04-drive.jpg
+  -->
 
   <!-- =======================================================
        NAVIGATION
@@ -1717,7 +1955,7 @@
 
             <div class="thermal-labels">
               <span>Hot</span>
-              <span>Amber</span>
+              <span>Warm</span>
               <span>Cool</span>
             </div>
           </div>
@@ -1857,7 +2095,17 @@
               permanently. Tension-band closure. One-handed release.
             </p>
 
-          </article>
+          
+            <div class="process-visual">
+              <img
+                src="step-01-shell.jpg"
+                alt="Concept visual of the fitted GlacéGrip shell on a steering wheel"
+                loading="lazy"
+                onerror="this.style.display='none';"
+              />
+              <div class="process-visual-fallback">Step 01 visual · shell</div>
+            </div>
+</article>
 
 
           <article class="process-item">
@@ -1876,7 +2124,17 @@
               temperature point.
             </p>
 
-          </article>
+          
+            <div class="process-visual">
+              <img
+                src="step-02-core.jpg"
+                alt="Concept visual of the removable GlacéGrip cooling core sliding into the shell"
+                loading="lazy"
+                onerror="this.style.display='none';"
+              />
+              <div class="process-visual-fallback">Step 02 visual · core</div>
+            </div>
+</article>
 
 
           <article class="process-item">
@@ -1895,7 +2153,17 @@
               out of ice.
             </p>
 
-          </article>
+          
+            <div class="process-visual">
+              <img
+                src="step-03-recharge.jpg"
+                alt="Concept visual of the removable GlacéGrip cooling core recharging flat in a refrigerator"
+                loading="lazy"
+                onerror="this.style.display='none';"
+              />
+              <div class="process-visual-fallback">Step 03 visual · recharge</div>
+            </div>
+</article>
 
 
           <article class="process-item">
@@ -1913,7 +2181,17 @@
               Zero external condensation on your hands or the wheel.
             </p>
 
-          </article>
+          
+            <div class="process-visual">
+              <img
+                src="step-04-drive.jpg"
+                alt="Concept visual of hands comfortably driving with the GlacéGrip sleeve installed"
+                loading="lazy"
+                onerror="this.style.display='none';"
+              />
+              <div class="process-visual-fallback">Step 04 visual · drive</div>
+            </div>
+</article>
 
         </div>
 
@@ -2162,8 +2440,13 @@
 
           <div class="founder-meta">
 
-            <div class="founder-monogram">
-              MWK
+            <div class="founder-photo">
+              <img
+                src="founder-martha.jpg"
+                alt="Martha Wuya Koroma, founder of GlacéGrip"
+                loading="lazy"
+                onerror="this.style.display='none';"
+              />
             </div>
 
             <div>
@@ -2197,14 +2480,28 @@
           Q1 2027
         </span>
 
-        <h2>
-          Be the first to drive cool🧊🧊
-        </h2>
-
         <p>
           Join the early-access list for GlacéGrip's
           500-unit Southern Europe beta.
         </p>
+
+        <div class="drive-cool-stage" aria-label="Animated transition from hot to cool driving">
+          <div class="drive-message" aria-hidden="true">
+            <span>Be the first to drive cool. 🧊🧊</span>
+          </div>
+
+          <div class="drive-trail" aria-hidden="true"></div>
+          <div class="drive-road" aria-hidden="true"></div>
+
+          <div class="drive-car" aria-hidden="true">
+            <img
+              src="cta-drive-cool-car.png"
+              alt=""
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            />
+            <div class="drive-car-fallback" style="display:none;"></div>
+          </div>
+        </div>
 
         <form
   class="waitlist-form"
