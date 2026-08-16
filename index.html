@@ -1593,6 +1593,21 @@
     }
 
     @media (max-width: 760px) {
+      html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+section,
+.container,
+.hero-grid,
+.product-stage,
+.drive-cool-stage,
+.process-visual {
+  max-width: 100%;
+}
       .container {
         width: min(calc(100% - 36px), var(--max-width));
       }
@@ -1647,7 +1662,7 @@
       }
 
       h1 {
-        font-size: clamp(3rem, 14vw, 4.35rem);
+        font-size: clamp(2.8rem, 11vw, 4.1rem);
       }
 
       .hero-copy {
